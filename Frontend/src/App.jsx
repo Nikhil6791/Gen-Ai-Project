@@ -1,10 +1,13 @@
 import { RouterProvider } from "react-router";
 import { router } from "./app.routes.jsx";
+import { AuthProvider } from "./features/auth/auth.context";
 function App() {
   return (
     <>
       <div className="bg-black text-white h-screen w-screen">
-        <RouterProvider router={router} />
+        <AuthProvider>
+          <RouterProvider router={router} />
+        </AuthProvider>
       </div>
     </>
   );
