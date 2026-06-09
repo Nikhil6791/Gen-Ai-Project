@@ -4,7 +4,7 @@ import { AuthProvider } from "./features/auth/auth.context";
 function App() {
   return (
     <>
-      <div className="bg-black text-white h-screen w-screen">
+      <div className="relative bg-black text-white h-screen w-screen">
         <AuthProvider>
           <RouterProvider router={router} />
         </AuthProvider>

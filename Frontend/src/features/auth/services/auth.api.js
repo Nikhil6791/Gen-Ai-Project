@@ -13,6 +13,8 @@ export async function register({ userName, email, password }) {
       password,
     });
 
+    console.log(response);
+
     return response.data;
   } catch (err) {
     console.log(err);
@@ -25,6 +27,8 @@ export async function login({ email, password }) {
       email,
       password,
     });
+
+    console.log(response);
 
     return response.data;
   } catch (err) {

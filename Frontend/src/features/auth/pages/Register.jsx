@@ -1,12 +1,25 @@
-// import React from "react";
+import { useState } from "react";
 import { useNavigate, Link } from "react-router";
-
+import { useAuth } from "../hooks/useAuth";
 const Register = () => {
   const navigate = useNavigate();
-
-  const handleSubmit = (e) => {
+  const [userName, setUserName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const { loading, handleRegister } = useAuth();
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    await handleRegister({ userName, email, password });
+    navigate("/");
   };
+
+  if (loading) {
+    return (
+      <main>
+        <h1>Loading.....</h1>
+      </main>
+    );
+  }
 
   return (
     <>
@@ -21,6 +34,7 @@ const Register = () => {
             <div className="input-group flex gap-1 flex-col w-full ">
               <label htmlFor="email">UserName</label>
               <input
+                onChange={(e) => setUserName(e.target.value)}
                 className="bg-gray-800 px-4 py-3 rounded-xl outline-none w-full"
                 type="text"
                 name="username"
@@ -31,6 +45,7 @@ const Register = () => {
             <div className="input-group flex gap-1 flex-col w-full ">
               <label htmlFor="email">Email</label>
               <input
+                onChange={(e) => setEmail(e.target.value)}
                 className="bg-gray-800 px-4 py-3 rounded-xl outline-none w-full"
                 type="email"
                 name="email"
@@ -41,6 +56,7 @@ const Register = () => {
             <div className="input-group flex gap-1 flex-col w-full ">
               <label htmlFor="password">Password</label>
               <input
+                onChange={(e) => setPassword(e.target.value)}
                 className="bg-gray-800 px-4 py-3 rounded-xl outline-none w-full"
                 type="password"
                 name="password"
