@@ -3,6 +3,7 @@ import { Link } from "react-router";
 import { useAuth } from "../hooks/useAuth";
 import { Eye, EyeOff } from "lucide-react";
 import { useNavigate } from "react-router";
+import Loading from "../components/Loading";
 
 const Login = () => {
   const { loading, handleLogin } = useAuth();
@@ -18,16 +19,12 @@ const Login = () => {
   };
 
   if (loading) {
-    return (
-      <main>
-        <h1>Loading....</h1>
-      </main>
-    );
+    return <Loading />;
   }
   return (
     <>
       <main className="flex flex-col justify-center items-center h-screen w-screen">
-        <h1 className="mb-2">Login</h1>
+        <h1 className="mb-2 font-bold tracking-wider text-2xl">Login</h1>
 
         <div className="form-container">
           <form

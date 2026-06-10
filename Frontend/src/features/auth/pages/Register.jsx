@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate, Link } from "react-router";
 import { useAuth } from "../hooks/useAuth";
+import Loading from "../components/Loading";
 const Register = () => {
   const navigate = useNavigate();
   const [userName, setUserName] = useState("");
@@ -14,17 +15,13 @@ const Register = () => {
   };
 
   if (loading) {
-    return (
-      <main>
-        <h1>Loading.....</h1>
-      </main>
-    );
+    return <Loading />;
   }
 
   return (
     <>
       <main className="flex flex-col justify-center items-center h-screen w-screen">
-        <h1 className="mb-2">Register</h1>
+        <h1 className="mb-2 font-bold tracking-wider text-2xl">Register</h1>
 
         <div className="form-container">
           <form
