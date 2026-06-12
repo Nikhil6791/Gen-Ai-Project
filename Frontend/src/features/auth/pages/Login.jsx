@@ -21,6 +21,7 @@ const Login = () => {
   if (loading) {
     return <Loading />;
   }
+  
   return (
     <>
       <main className="flex flex-col justify-center items-center h-screen w-screen">
